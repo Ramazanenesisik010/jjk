@@ -3,7 +3,7 @@ FROM ubuntu:22.04
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TERM=xterm
 
-# Temel bağımlılıklar ve tmate kurulumu
+# Temel bağımlılıklar, tmate ve tarayıcı araçlarının kurulumu
 RUN apt-get update && apt-get install -y \
     curl \
     git \
@@ -12,10 +12,10 @@ RUN apt-get update && apt-get install -y \
     wget \
     && rm -rf /var/lib/apt/lists/*
 
-# Ngrok resmi linux sürümünü indir ve kur
-RUN curl -s https://amazonaws.com | tee /etc/apt/trusted.gpg.p411 > /dev/null \
-    && echo "deb https://amazonaws.com buster main" | tee /etc/apt/sources.list.d/ngrok.list \
-    && apt-get update && apt-get install -y ngrok
+# HATALI APT DEPOSU YERİNE: Ngrok Linux Binary sürümünü doğrudan indir ve kur
+RUN wget https://equinox.io \
+    && tar -xvzf ngrok-v3-stable-linux-amd64.tgz -C /usr/local/bin \
+    && rm ngrok-v3-stable-linux-amd64.tgz
 
 # PufferPanel resmi paket deposunu ekle ve kur
 RUN curl -s https://packagecloud.io | bash \
