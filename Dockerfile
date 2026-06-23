@@ -1,4 +1,5 @@
-FROM ubuntu:20.04
+FROM ubuntu:latest
+USER root
 LABEL maintainer="wingnut0310 <wingnut0310@gmail.com>"
 
 ENV LANG en_US.UTF-8
@@ -18,6 +19,6 @@ COPY /run_gotty.sh /run_gotty.sh
 
 RUN chmod 744 /run_gotty.sh
 
-EXPOSE 8081
+EXPOSE 8080
 
 CMD ["/bin/bash","/run_gotty.sh"]
