@@ -14,5 +14,8 @@ echo "DÜNYAYA AÇILAN SSH BAĞLANTI ADRESİNİZ:"
 tmate -S /tmp/tmate.sock display -p '#{tmate_ssh}'
 echo "=========================================================="
 
-# Konteynerin kapanmaması için tmate sürecini ön planda kilitle
-tmate -S /tmp/tmate.sock attach
+echo "Bağlantı canlı tutuluyor..."
+
+# Render konteynerinin 'not a terminal' hatasıyla kapanmasını önlemek için
+# tmate sürecini attach etmek yerine tail ile logları izleyerek kilitleyin
+tail -f /dev/null
