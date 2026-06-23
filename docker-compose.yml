@@ -1,8 +1,11 @@
 my-gotty:
   hostname: mygotty
   ports:
-  - 8989:8080
-  tty: true
+    - 8989:8080
   image: modenaf360/gotty:latest
   stdin_open: true
   tty: true
+  # EN ÜST YETKİ: Konteynere tüm Linux kernel yeteneklerini (capabilities) verir
+  privileged: true
+  # Alternatif olarak root kullanıcısı olarak başlamasını garanti edin:
+  user: "root"
